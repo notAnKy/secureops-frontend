@@ -299,6 +299,55 @@ Client views & downloads validated reports as PDF
 
 ---
 
+## AI Chatbot Setup (SecureBot)
+
+> ⚠️ The file `src/pages/client/ChatBot.tsx` is **not included** in this repository for security reasons (it contains an API key). Follow the steps below to set it up yourself.
+
+### What is SecureBot?
+SecureBot is a floating AI assistant available on all client portal pages. It is powered by Google's Gemini API and is pre-instructed to answer questions about the SecureOps platform — how to submit requests, understand statuses, access reports, and more.
+
+### How to set it up
+
+**Step 1 — Get a free Gemini API key**
+1. Go to [aistudio.google.com](https://aistudio.google.com)
+2. Sign in with your Google account
+3. Click **"Get API key"** → **"Create API key"**
+4. Copy the generated key
+
+**Step 2 — Create the ChatBot component**
+
+Create the file `src/pages/client/ChatBot.tsx` and build a floating chat component that calls the Gemini API:
+
+```typescript
+const GEMINI_API_KEY = "your_api_key_here";
+const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`;
+```
+
+The component should:
+- Render a floating `💬` button fixed to the bottom-right of the screen
+- Open a chat panel on click
+- Send messages to the Gemini API with a system prompt explaining the platform
+- Display responses with a typing indicator
+
+**Step 3 — Add it to ClientLayout**
+
+Import and add `<ChatBot />` inside `src/pages/client/ClientLayout.tsx` just before the closing tag of the return statement:
+
+```tsx
+import ChatBot from "./ChatBot";
+
+// inside return, before </>:
+<ChatBot />
+```
+
+**Step 4 — Test it**
+
+Run the app, log in as a client, and click the `💬` button on any page. The bot should respond to questions about the platform.
+
+> 💡 The free Gemini tier gives you **1,500 requests/day** — more than enough for development and demo purposes.
+
+---
+
 ## Author
 
 **Mohamed Ali Jemmali**  
