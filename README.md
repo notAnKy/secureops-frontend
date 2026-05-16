@@ -350,7 +350,7 @@ Run the app, log in as a client, and click the `💬` button on any page. The bo
 
 ## Authors
 
-**Mohamed Ali Jemmali** - **Rami Boubakri**  
+**Mohamed Ali Jemmali** - **Rami Boubakri** - **Zouhaier Karoui**
 Software Engineering — 2025/2026
 
 ---
